@@ -1,18 +1,19 @@
-
-    #include <stdio.h>  
-    #include <sys/types.h>  
-    #include <sys/socket.h>  
-    #include <netinet/in.h>  
-    #include <arpa/inet.h>  
+#include <stdio.h>
+#include <string.h>   
+#include <unistd.h>     
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>  
       
-    int main(int argc, char *argv[])  
+    int main(void)  
     {  
         int server_sockfd;//服务器端套接字  
         int client_sockfd;//客户端套接字  
         int len;  
         struct sockaddr_in my_addr;   //服务器网络地址结构体  
         struct sockaddr_in remote_addr; //客户端网络地址结构体  
-        int sin_size;  
+        socklen_t sin_size;  
         char buf[BUFSIZ];  //数据传送的缓冲区  
         memset(&my_addr,0,sizeof(my_addr)); //数据初始化--清零  
         my_addr.sin_family=AF_INET; //设置为IP通信  
